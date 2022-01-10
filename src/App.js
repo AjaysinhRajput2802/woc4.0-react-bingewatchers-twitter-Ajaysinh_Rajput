@@ -1,25 +1,29 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+// Components
+import NavBar from './components/NavBar';
+import Home from './components/Home';
+import Trending from './components/Trending';
+import Profile from './components/Profile';
+import Auth from './components/Auth';
+import NotFound from './components/NotFound';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+// Styles
+import { GlobalStyle } from './GlobalStyle';
+
+const App = () => (
+    <Router>
+      <NavBar />
+      <Routes>
+        <Route path='/' element={<Home />} />
+        <Route path='/trending' element={<Trending />} />
+        <Route path='/profile' element={<Profile />} />
+        <Route path='/auth' element={<Auth />} />
+        <Route path='*' element={<NotFound />} />
+      </Routes>
+      <GlobalStyle />
+    </Router>
+);
 
 export default App;
